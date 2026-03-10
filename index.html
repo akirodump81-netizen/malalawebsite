@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RNHS Login & Sign Up</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+
+    background-image: url("images (4).jpeg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+    background-attachment: fixed;
+
+    height:100vh;
+    background-color:#1b1b2f;
+}
+
+/* AUTH BOX */
+.auth-box{
+    background:rgba(0,0,0,0.8);
+    padding:40px;
+    border-radius:15px;
+    width:360px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    color:white;
+    margin:60px auto;
+}
+
+.auth-box h2{
+    margin-bottom:20px;
+    color:gold;
+}
+
+.auth-box input, .auth-box select{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border-radius:5px;
+    border:none;
+}
+
+.auth-box button{
+    width:100%;
+    padding:15px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.auth-box button:hover{
+    background:darkorange;
+}
+
+.auth-box a{
+    display:inline-block;
+    margin-top:15px;
+    color:#00ccff;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+#error{
+    color:red;
+    font-size:14px;
+}
+
+/* hide signup first */
+#signupBox{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="auth-box">
+
+<!-- LOGIN -->
+<div id="loginBox">
+<h2>Login</h2>
+
+<p id="error"></p>
+
+<input id="li_user" placeholder="Username">
+<input id="li_pass" type="password" placeholder="Password">
+
+<button class="btn"><a href="main page.html">Login</a></button>
+
+
+<p>No account? <a onclick="showSignup()">Sign Up</a></p>
+</div>
+
+<!-- SIGNUP -->
+<div id="signupBox">
+<h2>Sign Up</h2>
+
+<input placeholder="Full Name">
+<input placeholder="Age">
+
+<select>
+<option disabled selected>Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<input id="su_user" placeholder="Username">
+<input id="su_pass" type="password" placeholder="Password">
+
+<button onclick="register()">Register</button>
+
+<p>Already have an account? <a onclick="showLogin()">Login</a></p>
+</div>
+
+</div>
+
+<script>
+
+/* SWITCH FORMS */
+function showSignup(){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("signupBox").style.display="block";
+}
+
+function showLogin(){
+    document.getElementById("signupBox").style.display="none";
+    document.getElementById("loginBox").style.display="block";
+}
+
+/* REGISTER */
+function register(){
+    let user=document.getElementById("su_user").value;
+    let pass=document.getElementById("su_pass").value;
+
+    if(user===""||pass===""){
+        alert("Complete all fields");
+        return;
+    }
+
+    localStorage.setItem("username",user);
+    localStorage.setItem("password",pass);
+
+    alert("Account Registered Successfully!");
+    showLogin();
+}
+
+/* LOGIN */
+function loginUser(){
+    let user=document.getElementById("li_user").value;
+    let pass=document.getElementById("li_pass").value;
+
+    let savedUser=localStorage.getItem("username");
+    let savedPass=localStorage.getItem("password");
+
+    if(user===savedUser && pass===savedPass){
+        alert("Login Successful!");
+    }else{
+        document.getElementById("error").innerText="Invalid username or password";
+    }
+}
+
+</script>
+
+</body>
+</html>

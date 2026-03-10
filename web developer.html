@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Web Developer Profile</title>
+<style>
+/* ===== BODY ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ===== CARD ===== */
+.profile-card {
+    background: #fff;
+    width: 85%; /* almost full screen width */
+    max-width: 1000px;
+    border-radius: 30px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 60px;
+    transition: transform 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ===== PROFILE IMAGE ===== */
+.profile-card img {
+    width: 400px;   /* bigger image */
+    height: 500px;  /* rectangular */
+    margin-top: 50px;
+    object-fit: cover;
+    border: 5px solid #ff7e5f;
+    border-radius: 15px;
+}
+
+/* ===== NAME ===== */
+.profile-card h1 {
+    margin: 30px 0 20px 0;
+    font-size: 48px; /* really big for screenshot */
+    color: #333;
+}
+
+/* ===== INFO CARDS ===== */
+.info-card {
+    margin: 25px 60px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    padding: 22px;
+    border-radius: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    font-size: 24px; /* bigger text */
+}
+
+.info-card:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    transform: translateY(-3px);
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 22px 50px;
+    background: #ff7e5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 24px; /* big button */
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #feb47b;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+    .profile-card{
+        width: 95%;
+        padding-bottom: 40px;
+    }
+    .profile-card img{
+        width: 300px;
+        height: 400px;
+        margin-top: 30px;
+    }
+    .info-card{
+        font-size: 20px;
+        margin: 20px 30px;
+    }
+    .back-btn{
+        font-size: 20px;
+        padding: 18px 40px;
+    }
+}
+@media(max-width:650px){
+    .profile-card img{
+        width: 250px;
+        height: 330px;
+    }
+    .info-card{
+        font-size: 18px;
+        margin: 15px 20px;
+    }
+    .back-btn{
+        font-size: 18px;
+        padding: 15px 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+    <img src="./IMG_20260209_203746.jpg" alt="Eve Angelique Malala">
+    <h1>Eve Angelique Malala</h1>
+
+    <div class="info-card">
+        <span>Role:</span>
+        <span>Student Web Developer</span>
+    </div>
+
+    <div class="info-card">
+        <span>Email:</span>
+        <span>eveangeliquemalala103@gmail.com</span>
+    </div>
+
+    <div class="info-card">
+        <span>Location:</span>
+        <span>Guiling,Rosales, Pangasinan</span>
+    </div>
+
+    <a href="main.html" class="back-btn">⬅ Back to Website</a>
+</div>
+
+</body>
+</html>

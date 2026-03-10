@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rosales National High School Website</title><style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+background:#1b1b2f;
+color:white;
+}
+
+/* ===== PAGE SYSTEM ===== */
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+/* ===== NAV ===== */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:linear-gradient(90deg,#ff6b6b,#fbc531);
+padding:15px;
+text-align:center;
+z-index:1000;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav a:hover{
+color:#ffdd59;
+}
+
+/* ===== SECTIONS ===== */
+section{
+padding:120px 40px;
+min-height:100vh;
+}
+
+/* ===== HOME ===== */
+#home{
+background-image:url("images.jpeg");
+background-repeat:no-repeat;
+background-position:center top;
+background-size:contain;
+height:300px;
+text-align:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* ===== CARDS ===== */
+.cards{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:30px;
+}
+
+.card{
+width:250px;
+background:linear-gradient(135deg,#ff9ff3,#feca57);
+padding:15px;
+border-radius:15px;
+text-align:center;
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+/* ===== MODALS ===== */
+#strandModal,#facilityModal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.95);
+padding:50px;
+text-align:center;
+}
+
+button{
+padding:10px 20px;
+background:gold;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* ===== CONTACT ===== */
+form{
+max-width:400px;
+margin:auto;
+}
+
+input,textarea,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+background:linear-gradient(90deg,#ff6b6b,#fbc531);
+text-align:center;
+padding:15px;
+}
+
+/* ===== LOGIN / SIGNUP ===== */
+
+.login-bg{
+background-image:url("/images (4).jpeg");
+background-repeat:no-repeat;
+background-position:center top;
+background-size:contain;
+background-attachment:fixed;
+height:100vh;
+}
+
+.auth-box{
+background:rgba(0,0,0,0.8);
+padding:40px;
+border-radius:15px;
+width:360px;
+text-align:center;
+margin:60px auto;
+}
+
+.auth-box h2{
+color:gold;
+margin-bottom:20px;
+}
+
+.auth-box button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:gold;
+color:black;
+font-weight:bold;
+}
+
+#error{
+color:red;
+font-size:14px;
+}
+
+/* ===== WEB DEVELOPER PROFILE ===== */
+
+.profile-page{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.profile-card{
+background:white;
+width:85%;
+max-width:1000px;
+border-radius:30px;
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
+text-align:center;
+padding-bottom:60px;
+}
+
+.profile-card img{
+width:400px;
+height:500px;
+margin-top:50px;
+object-fit:cover;
+border:5px solid #ff7e5f;
+border-radius:15px;
+}
+
+.profile-card h1{
+font-size:48px;
+margin:30px 0;
+color:#333;
+}
+
+.info-card{
+margin:25px 60px;
+background:linear-gradient(135deg,#ff7e5f,#feb47b);
+color:white;
+padding:22px;
+border-radius:18px;
+display:flex;
+justify-content:space-between;
+font-size:24px;
+}
+
+.back-btn{
+display:inline-block;
+margin-top:40px;
+padding:20px 50px;
+background:#ff7e5f;
+color:white;
+text-decoration:none;
+border-radius:20px;
+font-size:24px;
+}
+
+</style></head><body><!-- LOGIN PAGE --><div id="loginPage" class="page active login-bg">
+<div class="auth-box">
+<h2>Login</h2>
+<p id="error"></p>
+<input id="li_user" placeholder="Username">
+<input id="li_pass" type="password" placeholder="Password">
+<button onclick="loginUser()">Log In</button>
+<p>No account? <a onclick="showPage('signupPage')">Sign Up</a></p>
+</div>
+</div><!-- SIGNUP PAGE --><div id="signupPage" class="page login-bg">
+<div class="auth-box">
+<h2>Sign Up</h2>
+<input placeholder="Full Name">
+<input placeholder="Age">
+<select>
+<option disabled selected>Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+<input id="su_user" placeholder="Username">
+<input id="su_pass" type="password" placeholder="Password">
+<button onclick="register()">Register</button>
+<p>Already have account? <a onclick="showPage('loginPage')">Login</a></p>
+</div>
+</div><!-- MAIN WEBSITE --><div id="mainPage" class="page"><nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#missionvision">Mission & Vision</a>
+<a href="#strands">Strands</a>
+<a href="#facilities">Facilities</a>
+<a href="#contact">Contact</a>
+</nav><section id="home">
+<h1>Welcome to Senior High School</h1>
+<p>Quality Education for a Better Future</p>
+</section><section id="about">
+<h1>About Us</h1>
+<p>Our school is committed to providing excellent education and preparing students for college and careers.</p>
+</section><section id="missionvision">
+<h1>Mission and Vision of Rosales National High School</h1><h3>MISSION</h3>
+<p>To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education.</p><h3>VISION</h3>
+<p>We dream of Filipinos who passionately love their country and contribute meaningfully to building the nation.</p>
+</section><section id="strands">
+<h1>Senior High Strands</h1><div class="cards"><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\8af68f6d-5150-4c5c-a3dd-fdf99f1989e4.jfif">
+<h3>STEM</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\d3a13c34-2b4d-4d2a-a161-e47bd785bfd1.jfif">
+<h3>ABM</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\8c2959e9-3a7e-4fb6-a366-4fbe099cabda.jfif">
+<h3>HUMSS</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\6ff0abd9-c598-4916-856f-b0fba152467d.jfif">
+<h3>TVL</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\8af68f6d-5150-4c5c-a3dd-fdf99f1989e4.jfif">
+<h3>GAS</h3>
+</div></div>
+</section><section id="facilities"><h1>Facilities</h1><div class="cards"><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\4efd6bfc-b6ab-4a7b-86a3-56930676a43e.jfif">
+<h3>Library</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\1bb5f545-dc2b-49ec-8f4c-b91672657ecc.jfif">
+<h3>Computer Lab</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\7304e4e8-2d44-4675-ac29-6e29ab433217.jfif">
+<h3>Science Lab</h3>
+</div><div class="card">
+<img src="c:\Users\Admin\Desktop\malala final website\e1a91db1-7259-4489-93c9-199bec084705.jfif">
+<h3>Gym</h3>
+</div></div></section><section id="contact"><h1>Contact Us</h1><form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="4" placeholder="Your Message"></textarea>
+<button type="submit">Send</button>
+</form></section><footer>© 2026 Senior High School
+
+<br><br>
+
+<a onclick="showPage('developerPage')" style="color:gold;">Web Developer Profile</a>
+
+<br><br>
+
+<a onclick="logout()" style="color:white;">Log out</a>
+
+</footer></div><!-- WEB DEVELOPER PAGE --><div id="developerPage" class="page profile-page"><div class="profile-card"><img src="./IMG_20260209_203746.jpg"><h1>Eve Angelique Malala</h1><div class="info-card">
+<span>Role:</span>
+<span>Student Web Developer</span>
+</div><div class="info-card">
+<span>Email:</span>
+<span>eveangeliquemalala103@gmail.com</span>
+</div><div class="info-card">
+<span>Location:</span>
+<span>Guiling, Rosales, Pangasinan</span>
+</div><a class="back-btn" onclick="showPage('mainPage')">⬅ Back to Website</a>
+
+</div></div><script>
+
+function showPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(page).classList.add("active");
+}
+
+function register(){
+
+let user=document.getElementById("su_user").value;
+let pass=document.getElementById("su_pass").value;
+
+if(user===""||pass===""){
+alert("Complete all fields");
+return;
+}
+
+localStorage.setItem("username",user);
+localStorage.setItem("password",pass);
+
+alert("Account Registered Successfully!");
+showPage("loginPage");
+
+}
+
+function loginUser(){
+
+let user=document.getElementById("li_user").value;
+let pass=document.getElementById("li_pass").value;
+
+let savedUser=localStorage.getItem("username");
+let savedPass=localStorage.getItem("password");
+
+if(user===savedUser && pass===savedPass){
+showPage("mainPage");
+}
+else{
+document.getElementById("error").innerText="Invalid username or password";
+}
+
+}
+
+function logout(){
+showPage("loginPage");
+}
+
+</script></body>
+</html>
